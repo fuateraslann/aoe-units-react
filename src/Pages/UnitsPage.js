@@ -3,7 +3,7 @@ import { useDispatch , useSelector } from 'react-redux'
 
 import { getUnitRequest } from '../Redux/Units/unitAction'
 import AgesFilterBar from '../Components/NavBar/UnitsPageComponents/AgesFilter/AgesFilterBar'
-
+import CostsFilterBar from '../Components/NavBar/UnitsPageComponents/CostsFilter/CostsFilterBar'
 export default function UnitsPage() {
 
   const dispatch = useDispatch()
@@ -12,20 +12,23 @@ export default function UnitsPage() {
     dispatch(getUnitRequest())
   },[])
     
-  
+{/* <table>
+          <tbody>
+              <tr>
+              <td><a >Blah Blah</a></td>
+              <td><a href="#">1234567</a></td>
+              <td><a href="#">more text</a></td>
+              </tr>
+          </tbody>
+      </table> */}
   return (
       <div>
         <h2 style = {{textAlign :"center"}}>UNITS PAGE</h2>
         <AgesFilterBar/>
-        <table>
-            <tbody>
-                <tr>
-                <td><a >Blah Blah</a></td>
-                <td><a href="#">1234567</a></td>
-                <td><a href="#">more text</a></td>
-                </tr>
-            </tbody>
-        </table>
+        <h2>Costs</h2>
+        <CostsFilterBar contentText={"Wood"}/>
+        <CostsFilterBar contentText={"Food"}/>
+        <CostsFilterBar contentText={"Gold"}/>
       </div>
    
   )
