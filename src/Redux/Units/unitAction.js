@@ -9,12 +9,12 @@ export const getUnitRequestSuccess = data => ({
     payload: data
 })
 
-export const setFilteredUnit = (data,ages,wood,food,gold) => ({
+export const setFilteredUnit = (data,agesFilter,woodFilter,foodFilter,goldFilter) => ({
      type: SET_FILTERED_UNIT,
      payload : data
-     .filter(element => element.age === ages || ages ==="All")
-     .filter(element => (element.cost == null || element.cost.Wood === undefined || wood === null || element.cost.Wood <= wood.Wood ) )
-     .filter(element => (element.cost == null || element.cost.Food === undefined || food === null || element.cost.Food <= food.Food ) )
-     .filter(element => (element.cost == null || element.cost.Gold === undefined || gold === null  || element.cost.Gold <= gold.Gold ) )
+     .filter(element => element.age === agesFilter || agesFilter ==="All")
+     .filter(element => (element.cost == null || element.cost.Wood === undefined || woodFilter === null || element.cost.Wood <= woodFilter ) )
+     .filter(element => (element.cost == null || element.cost.Food === undefined || foodFilter === null || element.cost.Food <= foodFilter ) )
+     .filter(element => (element.cost == null || element.cost.Gold === undefined || goldFilter === null  || element.cost.Gold <= goldFilter ) )
 })
 

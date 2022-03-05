@@ -1,28 +1,32 @@
-import React , {useState}from 'react'
+import React , {useEffect, useState}from 'react'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import "./CostsFilterBar.scss"
 export default function CostsFilterBar({contentText , setCostFilter}) {
     const [selected,setSelected] = useState(false)
+    const [value,setValue] = useState(200)
 
-    const handleChange = () => { 
+    const handleSelect = () => { 
         setSelected(!selected)   
     }; 
-    const getFilterValue = (event)=>{
-        console.log(event.target.value)
-    }
+    
+    useEffect(()=>{
+        selected ? setCostFilter(value) : setCostFilter(null) 
+    },[selected , value ,setCostFilter])
+
     return ( 
         <div className='container'>
             <div className='checkbox'>
-                <input value = "Woods" type="checkbox" onChange={handleChange}/> 
+                <input value = "Woods" type="checkbox" onChange={handleSelect}/> 
                 <label htmlFor="Woods">{contentText}</label><br/><br/> 
             </div>
             <Box sx={{ width: 150 , marginLeft : "15px" }}>
                 <Slider
                     min = {0}
                     max = {200}
+                    defaultValue = {200}
                     disabled = {selected ? false : true}
-                    onChange={getFilterValue}
+                    onChange={(e) => setValue(e.target.value)}
                     valueLabelDisplay="auto"
                 />
             </Box>

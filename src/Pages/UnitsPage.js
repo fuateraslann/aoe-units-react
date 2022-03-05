@@ -18,16 +18,16 @@ export default function UnitsPage() {
 
   useEffect(()=>{
     dispatch(setFilteredUnit(units,selectedAgesFilter,woodFilter,foodFilter,goldFilter))
-  },[ units ,selectedAgesFilter ,woodFilter, foodFilter,goldFilter])
+  },[ units ,selectedAgesFilter ,woodFilter, foodFilter,goldFilter,dispatch])
 
   useEffect(()=>{
     dispatch(getUnitRequest())
-  },[])
+  },[dispatch])
   
   function handleClick(){
     console.log("a")
   }
-
+  console.log(woodFilter)
   return (
       <div>
         <h2 style = {{textAlign :"center"}}>UNITS PAGE</h2>
