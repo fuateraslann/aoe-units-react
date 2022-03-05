@@ -3,7 +3,8 @@ import createSagaMiddleware from 'redux-saga'
 import {unitReducer} from './Units/unitReducer'
 import unitSaga from './Units/saga'
 const INITIAL_STATE = {
-  units: {},
+  units: [],
+  filteredUnits : []
 }
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(

@@ -5,7 +5,6 @@ import { GET_UNIT_REQUEST} from "../actionTypes";
 function* fetchData() {
   try {
     const data = yield call(getUnitList)
-    console.log(data)
     yield put(getUnitRequestSuccess(data))
   } catch (err) {
     console.log('error :', err)

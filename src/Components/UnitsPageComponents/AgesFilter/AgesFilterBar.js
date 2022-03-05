@@ -1,9 +1,11 @@
-import React, {  } from 'react'
+import React from 'react'
 
 import "./AgesFilter.scss"
-export default function AgesFilterBar() {
 
-  function handleClick(event){
+export default function AgesFilterBar({setSelectedAgesFilter}) {
+
+  function handleClick(event,filter){
+
     // css action/////
     var i, tablinks;
     tablinks = document.getElementsByClassName("tablinks");
@@ -11,14 +13,15 @@ export default function AgesFilterBar() {
         tablinks[i].className = tablinks[i].className.replace("active", "");
     }
     event.currentTarget.className += " active";
-    //// setFilterState
 
+    //// setFilterState
+    setSelectedAgesFilter(filter)
   }
   return (
       <div>
         <h2>Ages</h2>
         <div className="tab">
-            <button className="tablinks" onClick={(e)=>handleClick(e,"All")}>All</button>
+            <button className="tablinks active" onClick={(e)=>handleClick(e,"All")}>All</button>
             <button className="tablinks" onClick={(e)=>handleClick(e,"Dark")}>Dark</button>
             <button className="tablinks" onClick={(e)=>handleClick(e,"Feudal")}>Feudal</button>
             <button className="tablinks" onClick={(e)=>handleClick(e,"Castle")}>Castle</button>

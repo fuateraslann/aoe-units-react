@@ -4,20 +4,18 @@ export function unitReducer (state, action){
       case GET_UNIT_REQUEST:
         return {
             ...state,
-            units : {}
+            units : []
         }
       case GET_UNIT_REQUEST_SUCCESS:
         return {
             ...state,
             units: action.payload
         }
-    //   case SET_FILTERED_UNIT:
-    //         return {
-    //             ...state,
-    //             units: action.payload,
-    //             ages : action.ages,
-    //             costs : action.costs
-    //         }
+       case SET_FILTERED_UNIT:
+             return {
+                 ...state,
+                 filteredUnits: action.payload
+             }
       default:
             return state
     }
