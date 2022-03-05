@@ -4,7 +4,8 @@ import {unitReducer} from './Units/unitReducer'
 import unitSaga from './Units/saga'
 const INITIAL_STATE = {
   units: [],
-  filteredUnits : []
+  filteredUnits : [],
+  unitForDetails : null
 }
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(

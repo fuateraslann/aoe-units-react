@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { getUnitList } from '../../Api/apiForUnits'
 import { getUnitRequestSuccess } from './unitAction'
-import { GET_UNIT_REQUEST} from "../actionTypes";
+import { GET_UNIT_REQUEST , SET_UNIT_FOR_DETAILS} from "../actionTypes";
 function* fetchData() {
   try {
     const data = yield call(getUnitList)
@@ -10,7 +10,6 @@ function* fetchData() {
     console.log('error :', err)
   }
 }
-
 
 export default function* unitSaga() {
   yield takeEvery(GET_UNIT_REQUEST, fetchData)

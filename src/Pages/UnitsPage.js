@@ -1,33 +1,39 @@
 import React, { useEffect , useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import { useDispatch , useSelector } from 'react-redux'
 
-import { getUnitRequest ,setFilteredUnit} from '../Redux/Units/unitAction'
+import { getUnitRequest ,setFilteredUnit , setUnitForDetails} from '../Redux/Units/unitAction'
 import AgesFilterBar from '../Components/UnitsPageComponents/AgesFilter/AgesFilterBar'
 import CostsFilterBar from '../Components/UnitsPageComponents/CostsFilter/CostsFilterBar'
-import "./UnitsPage.scss"
+import "./Styles/UnitsPage.scss"
 export default function UnitsPage() {
 
   const dispatch = useDispatch()
   const filteredUnits = useSelector(state => state.filteredUnits)
   const units = useSelector(state => state.units)
 
+  const navigate = useNavigate()
+  
   const [selectedAgesFilter , setSelectedAgesFilter] = useState("All")
   const [woodFilter , setWoodFilter] = useState(null)
   const [foodFilter , setFoodFilter] = useState(null)
   const [goldFilter , setGoldFilter] = useState(null)
 
+  // listening filter states  
   useEffect(()=>{
     dispatch(setFilteredUnit(units,selectedAgesFilter,woodFilter,foodFilter,goldFilter))
   },[ units ,selectedAgesFilter ,woodFilter, foodFilter,goldFilter,dispatch])
 
+  // at first render, get async data 
   useEffect(()=>{
     dispatch(getUnitRequest())
   },[dispatch])
-  
-  function handleClick(){
-    console.log("a")
+
+  async function  handleTableRowClick(unit){
+    dispatch(setUnitForDetails(unit))
+    navigate("/unitDetail") 
   }
-  console.log(woodFilter)
+
   return (
       <div>
         <h2 style = {{textAlign :"center"}}>UNITS PAGE</h2>
@@ -44,8 +50,8 @@ export default function UnitsPage() {
               <th>age</th>
               <th>costs</th>
             </tr>
-          {filteredUnits.length !==0 && filteredUnits.map(unit => (
-              <tr key={unit.id} onClick = {handleClick}>
+          {filteredUnits.length !==0 ? filteredUnits.map(unit => (
+              <tr key={unit.id} onClick = {()=>handleTableRowClick(unit)}>
                 <td>{unit.id}</td>
                 <td>{unit.name}</td>
                 <td>{unit.age}</td>
@@ -55,7 +61,7 @@ export default function UnitsPage() {
                 </span> : ""} 
                 </td>
               </tr>
-          ))}
+          )) : "no matching data"}
           </tbody>
         </table> 
       </div>
