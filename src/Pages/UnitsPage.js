@@ -42,28 +42,30 @@ export default function UnitsPage() {
         <CostsFilterBar contentText={"Wood"} setCostFilter = {(wood)=> setWoodFilter(wood)}/>
         <CostsFilterBar contentText={"Food"} setCostFilter = {(food)=> setFoodFilter(food)}/>
         <CostsFilterBar contentText={"Gold"} setCostFilter = {(gold)=> setGoldFilter(gold)}/>
-        <table>
+        {filteredUnits.length !==0 ?
+          <table>
           <tbody>
-            <tr>
-              <th>id</th>
-              <th>name</th>
-              <th>age</th>
-              <th>costs</th>
-            </tr>
-          {filteredUnits.length !==0 ? filteredUnits.map(unit => (
-              <tr key={unit.id} onClick = {()=>handleTableRowClick(unit)}>
-                <td>{unit.id}</td>
-                <td>{unit.name}</td>
-                <td>{unit.age}</td>
-                <td>{unit.cost ? <span>{unit.cost.Wood ? <span>Wood: {unit.cost.Wood},<br/></span>:""}
-                {unit.cost.Food ? <span>Food: {unit.cost.Food},<br/></span>:""}
-                {unit.cost.Gold ? <span>Gold: {unit.cost.Gold}<br/></span>:""}
-                </span> : ""} 
-                </td>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>age</th>
+                <th>costs</th>
               </tr>
-          )) : "no matching data"}
-          </tbody>
-        </table> 
+            {filteredUnits.map(unit => (
+                <tr key={unit.id} onClick = {()=>handleTableRowClick(unit)}>
+                  <td>{unit.id}</td>
+                  <td>{unit.name}</td>
+                  <td>{unit.age}</td>
+                  <td>{unit.cost ? <span>{unit.cost.Wood ? <span>Wood: {unit.cost.Wood},<br/></span>:""}
+                  {unit.cost.Food ? <span>Food: {unit.cost.Food},<br/></span>:""}
+                  {unit.cost.Gold ? <span>Gold: {unit.cost.Gold}<br/></span>:""}
+                  </span> : ""} 
+                  </td>
+                </tr>
+            )) }
+            </tbody> 
+          </table> 
+        : "no matching data"}
       </div>
    
   )
