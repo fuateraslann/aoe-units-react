@@ -8,6 +8,8 @@ In the project directory, you can run:
 
 ### `npm start`
 
+## This command also runs the local api on port 3004 ("http://localhost:3004/units"). If it doesn't work , you can run manually by writing `json-server --watch src/Api/age-of-empires-units.json --port 3004`
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 

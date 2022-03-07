@@ -1,4 +1,3 @@
-import React from 'react'
 import {rest} from "msw"
 import "@testing-library/jest-dom/extend-expect"
 import {setupServer} from "msw/node"
