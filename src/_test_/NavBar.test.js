@@ -4,7 +4,7 @@ import NavBar from "../Components/NavigationBar/NavBar"
 
 const setup = () => {
     return shallow(<NavBar/>);
-  };
+};
 test('renders correctly', () => {
     const wrapper = setup();
     expect(wrapper).toBeTruthy();

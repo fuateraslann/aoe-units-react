@@ -29,7 +29,7 @@ export default function UnitsPage() {
     dispatch(getUnitRequest())
   },[dispatch])
 
-  async function  handleTableRowClick(unit){
+  function  handleTableRowClick(unit){
     dispatch(setUnitForDetails(unit))
     navigate("/unitDetail") 
   }
