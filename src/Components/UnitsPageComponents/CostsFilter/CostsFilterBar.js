@@ -17,8 +17,8 @@ export default function CostsFilterBar({contentText , setCostFilter}) {
     return ( 
         <div className='container'>
             <div className='checkbox'>
-                <input value = "Woods" type="checkbox" onChange={handleSelect}/> 
-                <label htmlFor="Woods">{contentText}</label><br/><br/> 
+                <input value = {contentText} type="checkbox" onChange={handleSelect}/> 
+                <label htmlFor={contentText}>{contentText}</label><br/><br/> 
             </div>
             <Box sx={{ width: 150 , marginLeft : "15px" }}>
                 <Slider
